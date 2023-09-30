@@ -2,6 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const app = express();
 
+const authJwt = require('./helpers/jwt');
+
 
 // db connection
 const { connect } = require('./dbConnection');
@@ -23,6 +25,8 @@ const ordersRoutes = require("./routes/orderRoutes");
 // middleware
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(authJwt());
+
 
 
 app.use(`${API_URL_V1}/products`, productRoutes)
@@ -38,4 +42,4 @@ connect();
 app.listen(3000, () => {
   console.log(process.env.DB_URI)
   console.log(`Server Version : 1 is running on http://localhost:3000${API_URL_V1}`);
-}); 
+});
