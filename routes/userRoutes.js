@@ -75,7 +75,7 @@ router.post('/login', async (req, res) => {
 
 // get user count
 router.get(`/get/count`, async (req, res) => {
-  const userCount = await User.countDocuments((count) => count)
+  const userCount = await User.countDocuments();
 
   if (!userCount) {
     res.status(500).json({ success: false })
