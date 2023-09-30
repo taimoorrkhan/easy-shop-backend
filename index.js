@@ -26,6 +26,7 @@ const ordersRoutes = require("./routes/orderRoutes");
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(authJwt());
+app.use('/public/uploads', express.static(__dirname + '/public/uploads'));
 
 
 
